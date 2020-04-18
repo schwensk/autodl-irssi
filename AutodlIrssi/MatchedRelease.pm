@@ -542,6 +542,19 @@ sub _writeCreatedTempFile {
 	close $fh;
 }
 
+sub _writeTempFile2 {
+	my ($self, $data) = @_;
+	
+	my $filename = $AutodlIrssi::g->{options}{tempDownloadDir} . "/$self->{ti}{torrentName}.torrent";
+	open(my $fh, '>', $filename) or die "Could not open file '$filename' $!";
+	print $fh $data;
+	close $fh;
+	
+	$AutodlIrssi::g->{tempFiles}->add($filename);
+	
+	return $filename;
+}
+
 sub _runProgram {
 	my $self = shift;
 
@@ -643,7 +656,7 @@ sub _sendRtorrent {
 			return;
 		}
 
-		my $filename = $self->_writeTempFile($self->{torrentFileData});
+		my $filename = $self->_writeTempFile2($self->{torrentFileData});
 		my $macroReplacer = $self->_getMacroReplacer($filename);
 		my $rtDir = getAbsPath($self->{uploadMethod}{rtDir});
 		my $rtCommands = $macroReplacer->replace($self->{uploadMethod}{rtCommands});
