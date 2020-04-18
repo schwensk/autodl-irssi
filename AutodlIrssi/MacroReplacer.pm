@@ -86,6 +86,7 @@ sub addTorrentInfo {
 	$self->add("Name1", $ti->{name1});
 	$self->add("Album", $ti->{name2});
 	$self->add("Name2", $ti->{name2});
+	$self->add("HakkyName", $ti->{name3});
 	$self->add("Season", $ti->{season});
 	$self->add("Season2", $fmtNum->("%02d", $ti->{season}));
 	$self->add("Episode", $ti->{episode});
