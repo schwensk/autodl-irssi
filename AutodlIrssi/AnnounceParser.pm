@@ -197,6 +197,7 @@ sub onNewLine {
 		year				=> "",
 		name1				=> "",		# artist, show, movie
 		name2				=> "",		# album
+		name3             		=> "",	  	# HakkyName with dots
 		season				=> "",
 		episode				=> "",
 		resolution			=> "",
@@ -721,6 +722,7 @@ sub extractReleaseNameInfo {
 
 		if (defined $indexMin) {
 			my $name1 = substr $releaseName, 0, $indexMin;
+			$setVariable->("name3", $name1);
 			$name1 =~ s/[^a-zA-Z0-9]/ /g;
 			$name1 =~ s/\s+/ /g;
 			$name1 = trim $name1;
