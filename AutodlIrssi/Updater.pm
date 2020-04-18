@@ -41,7 +41,7 @@ use File::Spec;
 use File::Copy;
 use Archive::Zip qw/ :ERROR_CODES /;
 use constant {
-	AUTODL_UPDATE_URL => 'https://api.github.com/repos/autodl-community/autodl-irssi/releases/latest',
+	AUTODL_UPDATE_URL => 'https://api.github.com/repos/schwensk/autodl-irssi/releases/latest',
 	TRACKERS_UPDATE_URL => 'https://api.github.com/repos/autodl-community/autodl-trackers/releases/latest',
 	UPDATE_USER_AGENT => 'autodl-irssi',
 };
@@ -124,7 +124,7 @@ sub _parseAutodlUpdate {
 
 	my $autodlTagName = my $autodlVersion = $autodlData->{tag_name};
 	$autodlVersion =~ s/.*v//;
-	my $autodlDownloadUrl = "https://github.com/autodl-community/autodl-irssi/releases/download/$autodlTagName/autodl-irssi-v$autodlVersion.zip";
+	my $autodlDownloadUrl = "https://github.com/schwensk/autodl-irssi/releases/download/$autodlTagName/autodl-irssi-v$autodlVersion.zip";
 	my $autodlChangeLog = $autodlData->{body};
 
 	$self->{autodl} = {
